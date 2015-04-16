@@ -11,31 +11,36 @@ def Openfile():
     #ftext = fhand.read()
     SearchInputfunction(filename, fhand)
     
-def SearchInputfunction(filename, fhand):
+def SearchInputfunction(filename,fhand):
     print '\n\nThe file we are searching is %s' % filename
+    print '\nRemember you can check your Regular Expression at https://regex101.com/#python'
     inputtext = raw_input('\n\nEnter regex search term: ')
-    #print '\n\nWe are searching for %s in %s, located at %s' % (inputstring,filename,fhand)
-    i = 0
-    for line in fhand:
-        if i <20:
+    if inputtext == 'new file' : Openfile()
+    else:
+        i = 0
+        for line in fhand:
+            if i <20:
+                line = line.rstrip()
+                print '\n',line
+                print inputtext
+
+                foundRegex = re.search(inputtext, line,)
+                print foundRegex
+                i +=1
+            else: break
             #print line
-            wordlist = line.split(" ")
-            print wordlist
-            i +=1
-        else: break
-        #print line
-        #inputwordlist = line.split()
-        #print inputwordlist
-        #delimiter = " "
-        #teststring = delimiter.join(inputwordlist)
-        #print teststring
-        # foundRegex = re.search(inputtext,teststring)
-        # if foundRegex != None:
-            # foundRegex = re.findall(inputtext,teststring)
-            # print "Result: " + str(foundRegex)
-        # else: 
-            # print '\n\nteststring\n\ninputtext'
-            # print "Search did not have any results."
+            #inputwordlist = line.split()
+            #print inputwordlist
+            #delimiter = " "
+            #teststring = delimiter.join(inputwordlist)
+            #print teststring
+            # foundRegex = re.search(inputtext,teststring)
+            # if foundRegex != None:
+                # foundRegex = re.findall(inputtext,teststring)
+                # print "Result: " + str(foundRegex)
+            # else: 
+                # print '\n\nteststring\n\ninputtext'
+                # print "Search did not have any results."
             
 def main():
     fhand = None
